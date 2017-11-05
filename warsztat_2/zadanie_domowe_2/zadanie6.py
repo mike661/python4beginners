@@ -16,9 +16,15 @@
 # Argumenty do funkcji będą przekazane po nazwie, jako keyword
 
 def ewakuacja(lista_osob, liczba_klatek_schodowych, liczba_osob_w_rzedzie, tempo_schodzenia):
-    raise NotImplementedError
-
-
+    rev_lista_osob = lista_osob[::-1]
+    result = [0]
+    for x in rev_lista_osob[0:-1]:
+    	czekanie = x // (liczba_klatek_schodowych * liczba_osob_w_rzedzie) #ile sekund schodzą pełne rzędy osob
+    	if x % (liczba_klatek_schodowych * liczba_osob_w_rzedzie) != 0:  #jesli istnieje reszta z dzielenia to dodajemy jedna sekunde (rownoznaczne z tym ze jest jeszcze niepelny rzad, ktory musi zejsc)
+    		result.append(result[-1] + czekanie+31)
+    	else:
+    		result.append(result[-1] + czekanie+30)
+    return result[::-1]
 
 
 lista_osob = [5, 10, 15]

@@ -42,6 +42,21 @@
 # https://stackoverflow.com/questions/2921847/what-does-the-star-operator-mean
 
 
+def function_results_sum(*args, **kwargs):
+	sum = 0
+	for function in args:
+		if function.__name__ in kwargs:
+			argumets = kwargs[function.__name__]
+			if not isinstance(argumets, int):
+				sum += function(*argumets)
+			else:
+				sum += function(argumets)
+		else:
+			sum += function()
+	return sum
+	
+
+
 def no_arg():
     return 5
 

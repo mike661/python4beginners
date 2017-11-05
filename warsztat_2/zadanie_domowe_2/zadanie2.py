@@ -6,6 +6,13 @@
 x = [1, 2, 3]
 y = [4, 5, 6]
 
+
+def copy_reversed(list_a, list_b):
+	temp_list = list_a[::-1]
+	list_b.extend(temp_list)
+	
+
+
 result = copy_reversed(x, y)
 
 assert y == [4, 5, 6, 3, 2, 1]
